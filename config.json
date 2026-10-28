@@ -1,0 +1,8 @@
+{
+  "username": "prithvipm412",
+  "name": "Prithvi Muchalambe",
+  "tagline": "Too curious to just attend lectures",
+  "stack": ["Python", "TypeScript", "PyTorch", "OpenCV", "MediaPipe", "FastAPI", "React", "Next.js", "Tailwind", "Solidity", "Godot"],
+  "exclude_repos": ["niche-vc-project"],
+  "builds_count": 4
+}

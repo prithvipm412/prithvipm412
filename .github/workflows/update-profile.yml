@@ -1,0 +1,47 @@
+name: Update profile cards
+
+# The default GITHUB_TOKEN only sees public contributions. To include private
+# contributions in the stats, create a fine-grained PAT (read-only: profile,
+# contents, metadata) and save it as the repo secret PROFILE_TOKEN.
+
+on:
+  schedule:
+    - cron: "17 20 * * *" # ~01:47 IST
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths-ignore:
+      - "assets/**"
+      - "README.md"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate cards
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: python scripts/generate.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add assets README.md scripts/icon_cache.json
+            git commit -m "chore: refresh profile cards"
+            git push
+          else
+            echo "No changes to commit."
+          fi

@@ -1,0 +1,33 @@
+<svg width="840" height="190" viewBox="0 0 840 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Repository, language and streak stats">
+<style>
+  .card{fill:#0b1426;stroke:#1c2b4a;stroke-width:1;}
+  .title{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;fill:#e6f1ff;}
+  .row-label{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;fill:#7d8bb0;}
+  .row-label-sm{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:10px;fill:#7d8bb0;}
+  .row-value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:18px;fill:#e6f1ff;}
+  .row-value-sm{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;fill:#e6f1ff;}
+  .sep{stroke:#1c2b4a;stroke-width:1;}
+  .bar-track{fill:#1c2b4a;}
+  .bar-fill{fill:#7c9cff;transform-box:fill-box;transform-origin:left;}
+  .streak-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:40px;font-weight:300;fill:#e6f1ff;}
+  @media (prefers-color-scheme: light) {
+    .card{fill:#f5f8ff;stroke:#d6e0f5;}
+    .title{fill:#0b1426;}
+    .row-label,.row-label-sm{fill:#5a6785;}
+    .row-value,.row-value-sm,.streak-num{fill:#0b1426;}
+    .sep{stroke:#d6e0f5;}
+    .bar-track{fill:#d6e0f5;}
+    .bar-fill{fill:#3b5bdb;}
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .bar-fill{animation:grow 0.6s ease-out forwards;}
+  }
+  @keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+</style>
+<g transform="translate(0,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><text x="20" y="32" class="title">Overview</text><text x="20" y="56" class="row-label">Repositories</text><text x="252" y="56" text-anchor="end" class="row-value">8</text><line x1="20" y1="68" x2="252" y2="68" class="sep"/><text x="20" y="86" class="row-label">Stars</text><text x="252" y="86" text-anchor="end" class="row-value">0</text><line x1="20" y1="98" x2="252" y2="98" class="sep"/><text x="20" y="116" class="row-label">Forks</text><text x="252" y="116" text-anchor="end" class="row-value">0</text><line x1="20" y1="128" x2="252" y2="128" class="sep"/><text x="20" y="146" class="row-label">Followers</text><text x="252" y="146" text-anchor="end" class="row-value">1</text></g><g transform="translate(284,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><text x="20" y="32" class="title">Languages</text><text x="20" y="52" class="row-label">Python</text><text x="252" y="52" text-anchor="end" class="row-value-sm">55.4%</text><rect x="20" y="58" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="58" width="128.53" height="2" rx="1" class="bar-fill" style="animation-delay:0.00s"/><text x="20" y="78" class="row-label">TypeScript</text><text x="252" y="78" text-anchor="end" class="row-value-sm">25.8%</text><rect x="20" y="84" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="84" width="59.86" height="2" rx="1" class="bar-fill" style="animation-delay:0.12s"/><text x="20" y="104" class="row-label">JavaScript</text><text x="252" y="104" text-anchor="end" class="row-value-sm">7.2%</text><rect x="20" y="110" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="110" width="16.70" height="2" rx="1" class="bar-fill" style="animation-delay:0.24s"/><text x="20" y="130" class="row-label">Solidity</text><text x="252" y="130" text-anchor="end" class="row-value-sm">4.5%</text><rect x="20" y="136" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="136" width="10.44" height="2" rx="1" class="bar-fill" style="animation-delay:0.36s"/><text x="20" y="156" class="row-label">HTML</text><text x="252" y="156" text-anchor="end" class="row-value-sm">2.6%</text><rect x="20" y="162" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="162" width="6.03" height="2" rx="1" class="bar-fill" style="animation-delay:0.48s"/></g><g transform="translate(568,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><text x="20" y="32" class="title">Streak</text>
+<text x="136.0" y="92" text-anchor="middle" class="streak-num">2</text>
+<text x="136.0" y="112" text-anchor="middle" class="row-label">days in a row</text>
+<text x="20" y="160" class="row-label-sm">Longest 2</text>
+<text x="252" y="160" text-anchor="end" class="row-label-sm">Peak 63 a day</text>
+</g>
+</svg>

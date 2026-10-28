@@ -1,33 +1,52 @@
 <svg width="840" height="190" viewBox="0 0 840 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Repository, language and streak stats">
 <style>
-  .card{fill:#0b1426;stroke:#1c2b4a;stroke-width:1;}
-  .title{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;fill:#e6f1ff;}
-  .row-label{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;fill:#7d8bb0;}
-  .row-label-sm{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:10px;fill:#7d8bb0;}
-  .row-value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:18px;fill:#e6f1ff;}
-  .row-value-sm{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;fill:#e6f1ff;}
-  .sep{stroke:#1c2b4a;stroke-width:1;}
-  .bar-track{fill:#1c2b4a;}
-  .bar-fill{fill:#7c9cff;transform-box:fill-box;transform-origin:left;}
-  .streak-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:40px;font-weight:300;fill:#e6f1ff;}
-  @media (prefers-color-scheme: light) {
-    .card{fill:#f5f8ff;stroke:#d6e0f5;}
-    .title{fill:#0b1426;}
-    .row-label,.row-label-sm{fill:#5a6785;}
-    .row-value,.row-value-sm,.streak-num{fill:#0b1426;}
-    .sep{stroke:#d6e0f5;}
-    .bar-track{fill:#d6e0f5;}
-    .bar-fill{fill:#3b5bdb;}
+
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #232323; --text: #ededed; --muted: #7a7a7a;
+  --accent: #f5f5f5; --accent-soft: #4a4a4a;
+  --heat0: #151515; --heat1: #2b2b2b; --heat2: #4d4d4d; --heat3: #8c8c8c; --heat4: #e8e8e8;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa; --card: #ffffff; --border: #e4e4e4; --text: #111111; --muted: #6b6b6b;
+    --accent: #111111; --accent-soft: #b5b5b5;
+    --heat0: #f0f0f0; --heat1: #d4d4d4; --heat2: #a3a3a3; --heat3: #5c5c5c; --heat4: #1a1a1a;
   }
-  @media (prefers-reduced-motion: no-preference) {
-    .bar-fill{animation:grow 0.6s ease-out forwards;}
-  }
-  @keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+}
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.card { fill: var(--card); stroke: var(--border); stroke-width: 1; }
+.title { font-size: 13px; font-weight: 600; fill: var(--text); }
+.label { font-size: 11px; fill: var(--muted); }
+.label-sm { font-size: 10px; fill: var(--muted); }
+.value { fill: var(--text); }
+.value-muted { fill: var(--muted); }
+.sep { stroke: var(--border); stroke-width: 1; }
+
+
+.row-value { font-size: 18px; }
+@media (prefers-reduced-motion: no-preference) {
+  .donut-seg-0{animation:donutseg0 0.8s ease-out both;}
+.donut-seg-1{animation:donutseg1 0.8s ease-out both;}
+.donut-seg-2{animation:donutseg2 0.8s ease-out both;}
+.donut-seg-3{animation:donutseg3 0.8s ease-out both;}
+.donut-seg-4{animation:donutseg4 0.8s ease-out both;}
+}
+@keyframes donutseg0{from{stroke-dasharray:0 263.89;}to{stroke-dasharray:146.99 116.90;}}@keyframes donutseg1{from{stroke-dasharray:0 263.89;}to{stroke-dasharray:67.56 196.34;}}@keyframes donutseg2{from{stroke-dasharray:0 263.89;}to{stroke-dasharray:19.00 244.89;}}@keyframes donutseg3{from{stroke-dasharray:0 263.89;}to{stroke-dasharray:11.88 252.02;}}@keyframes donutseg4{from{stroke-dasharray:0 263.89;}to{stroke-dasharray:6.86 257.03;}}
+
 </style>
-<g transform="translate(0,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><text x="20" y="32" class="title">Overview</text><text x="20" y="56" class="row-label">Repositories</text><text x="252" y="56" text-anchor="end" class="row-value">8</text><line x1="20" y1="68" x2="252" y2="68" class="sep"/><text x="20" y="86" class="row-label">Stars</text><text x="252" y="86" text-anchor="end" class="row-value">0</text><line x1="20" y1="98" x2="252" y2="98" class="sep"/><text x="20" y="116" class="row-label">Forks</text><text x="252" y="116" text-anchor="end" class="row-value">0</text><line x1="20" y1="128" x2="252" y2="128" class="sep"/><text x="20" y="146" class="row-label">Followers</text><text x="252" y="146" text-anchor="end" class="row-value">1</text></g><g transform="translate(284,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><text x="20" y="32" class="title">Languages</text><text x="20" y="52" class="row-label">Python</text><text x="252" y="52" text-anchor="end" class="row-value-sm">55.4%</text><rect x="20" y="58" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="58" width="128.53" height="2" rx="1" class="bar-fill" style="animation-delay:0.00s"/><text x="20" y="78" class="row-label">TypeScript</text><text x="252" y="78" text-anchor="end" class="row-value-sm">25.8%</text><rect x="20" y="84" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="84" width="59.86" height="2" rx="1" class="bar-fill" style="animation-delay:0.12s"/><text x="20" y="104" class="row-label">JavaScript</text><text x="252" y="104" text-anchor="end" class="row-value-sm">7.2%</text><rect x="20" y="110" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="110" width="16.70" height="2" rx="1" class="bar-fill" style="animation-delay:0.24s"/><text x="20" y="130" class="row-label">Solidity</text><text x="252" y="130" text-anchor="end" class="row-value-sm">4.5%</text><rect x="20" y="136" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="136" width="10.44" height="2" rx="1" class="bar-fill" style="animation-delay:0.36s"/><text x="20" y="156" class="row-label">HTML</text><text x="252" y="156" text-anchor="end" class="row-value-sm">2.6%</text><rect x="20" y="162" width="232" height="2" rx="1" class="bar-track"/><rect x="20" y="162" width="6.03" height="2" rx="1" class="bar-fill" style="animation-delay:0.48s"/></g><g transform="translate(568,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><text x="20" y="32" class="title">Streak</text>
-<text x="136.0" y="92" text-anchor="middle" class="streak-num">2</text>
-<text x="136.0" y="112" text-anchor="middle" class="row-label">days in a row</text>
-<text x="20" y="160" class="row-label-sm">Longest 2</text>
-<text x="252" y="160" text-anchor="end" class="row-label-sm">Peak 63 a day</text>
+<defs>
+<filter id="grain" x="-5%" y="-5%" width="110%" height="110%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.06 0"/>
+</filter>
+
+</defs>
+
+<g transform="translate(0,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><rect x="0.5" y="0.5" width="271" height="189" rx="10" filter="url(#grain)"/><text x="20" y="32" class="title sans">Overview</text><text x="20" y="56" class="label sans">Repositories</text><text x="252" y="56" text-anchor="end" class="value mono row-value">8</text><line x1="20" y1="68" x2="252" y2="68" class="sep"/><text x="20" y="86" class="label sans">Stars</text><text x="252" y="86" text-anchor="end" class="value mono row-value">0</text><line x1="20" y1="98" x2="252" y2="98" class="sep"/><text x="20" y="116" class="label sans">Forks</text><text x="252" y="116" text-anchor="end" class="value mono row-value">0</text><line x1="20" y1="128" x2="252" y2="128" class="sep"/><text x="20" y="146" class="label sans">Followers</text><text x="252" y="146" text-anchor="end" class="value mono row-value">1</text></g><g transform="translate(284,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><rect x="0.5" y="0.5" width="271" height="189" rx="10" filter="url(#grain)"/><text x="20" y="32" class="title sans">Languages</text><g transform="rotate(-90 70 118)"><circle cx="70" cy="118" r="42" class="donut-seg donut-seg-0" stroke-width="12" fill="none" stroke="var(--text)" opacity="0.92" stroke-dasharray="146.99 116.90" stroke-dashoffset="-0.00" style="animation-delay:0.00s"/><circle cx="70" cy="118" r="42" class="donut-seg donut-seg-1" stroke-width="12" fill="none" stroke="var(--text)" opacity="0.72" stroke-dasharray="67.56 196.34" stroke-dashoffset="-146.99" style="animation-delay:0.10s"/><circle cx="70" cy="118" r="42" class="donut-seg donut-seg-2" stroke-width="12" fill="none" stroke="var(--text)" opacity="0.55" stroke-dasharray="19.00 244.89" stroke-dashoffset="-214.55" style="animation-delay:0.20s"/><circle cx="70" cy="118" r="42" class="donut-seg donut-seg-3" stroke-width="12" fill="none" stroke="var(--text)" opacity="0.4" stroke-dasharray="11.88 252.02" stroke-dashoffset="-233.55" style="animation-delay:0.30s"/><circle cx="70" cy="118" r="42" class="donut-seg donut-seg-4" stroke-width="12" fill="none" stroke="var(--text)" opacity="0.26" stroke-dasharray="6.86 257.03" stroke-dashoffset="-245.42" style="animation-delay:0.40s"/></g><circle cx="150" cy="42" r="4" fill="var(--text)" opacity="0.92"/><text x="162" y="46" class="label sans">Python</text><text x="252" y="46" text-anchor="end" class="value-muted mono" style="font-size:11px">55.7%</text><circle cx="150" cy="66" r="4" fill="var(--text)" opacity="0.72"/><text x="162" y="70" class="label sans">TypeScr…</text><text x="252" y="70" text-anchor="end" class="value-muted mono" style="font-size:11px">25.6%</text><circle cx="150" cy="90" r="4" fill="var(--text)" opacity="0.55"/><text x="162" y="94" class="label sans">JavaScr…</text><text x="252" y="94" text-anchor="end" class="value-muted mono" style="font-size:11px">7.2%</text><circle cx="150" cy="114" r="4" fill="var(--text)" opacity="0.4"/><text x="162" y="118" class="label sans">Solidity</text><text x="252" y="118" text-anchor="end" class="value-muted mono" style="font-size:11px">4.5%</text><circle cx="150" cy="138" r="4" fill="var(--text)" opacity="0.26"/><text x="162" y="142" class="label sans">HTML</text><text x="252" y="142" text-anchor="end" class="value-muted mono" style="font-size:11px">2.6%</text></g><g transform="translate(568,0)"><rect x="0.5" y="0.5" width="271" height="189" rx="10" class="card"/><rect x="0.5" y="0.5" width="271" height="189" rx="10" filter="url(#grain)"/><text x="20" y="32" class="title sans">Streak</text>
+<text x="136.0" y="92" text-anchor="middle" class="value mono" style="font-size:40px;font-weight:300">2</text>
+<text x="136.0" y="112" text-anchor="middle" class="label sans">days in a row</text>
+<text x="20" y="160" class="label-sm sans">Longest 2</text>
+<text x="252" y="160" text-anchor="end" class="label-sm sans">Peak 63 a day</text>
 </g>
 </svg>

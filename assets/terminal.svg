@@ -1,0 +1,65 @@
+<svg width="840" height="170" viewBox="0 0 840 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal: a quick introduction">
+<style>
+
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #232323; --text: #ededed; --muted: #7a7a7a;
+  --accent: #f5f5f5; --accent-soft: #4a4a4a;
+  --heat0: #151515; --heat1: #2b2b2b; --heat2: #4d4d4d; --heat3: #8c8c8c; --heat4: #e8e8e8;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa; --card: #ffffff; --border: #e4e4e4; --text: #111111; --muted: #6b6b6b;
+    --accent: #111111; --accent-soft: #b5b5b5;
+    --heat0: #f0f0f0; --heat1: #d4d4d4; --heat2: #a3a3a3; --heat3: #5c5c5c; --heat4: #1a1a1a;
+  }
+}
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.card { fill: var(--card); stroke: var(--border); stroke-width: 1; }
+.title { font-size: 13px; font-weight: 600; fill: var(--text); }
+.label { font-size: 11px; fill: var(--muted); }
+.label-sm { font-size: 10px; fill: var(--muted); }
+.value { fill: var(--text); }
+.value-muted { fill: var(--muted); }
+.sep { stroke: var(--border); stroke-width: 1; }
+
+
+.term-dot { fill: var(--muted); }
+.term-dot.d2 { fill: var(--accent-soft); }
+.term-dot.d3 { fill: var(--border); }
+.term-bar { stroke: var(--border); stroke-width: 1; }
+.term-prompt { font-size: 12px; fill: var(--muted); }
+.term-output { font-size: 12px; fill: var(--text); }
+.cursor { fill: var(--text); opacity: 0; }
+@keyframes type0{from{width:0;}to{width:57.60px;}}@keyframes type1{from{width:0;}to{width:324.00px;}}@keyframes type2{from{width:0;}to{width:93.60px;}}@keyframes type3{from{width:0;}to{width:309.60px;}}@keyframes type4{from{width:0;}to{width:172.80px;}}@keyframes type5{from{width:0;}to{width:14.40px;}}
+@media (prefers-reduced-motion: no-preference) {
+  .typeclip { width: 0; }
+  #rect0{animation:type0 0.360s steps(8) 0.000s forwards;}
+#rect1{animation:type1 2.025s steps(45) 0.610s forwards;}
+#rect2{animation:type2 0.585s steps(13) 2.885s forwards;}
+#rect3{animation:type3 1.935s steps(43) 3.720s forwards;}
+#rect4{animation:type4 1.080s steps(24) 5.905s forwards;}
+#rect5{animation:type5 0.090s steps(2) 7.235s forwards;}
+  .cursor {
+    animation-name: cursor-pos, cursor-blink;
+    animation-duration: 8.325s, 1s;
+    animation-timing-function: steps(1), steps(2);
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards, none;
+    animation-delay: 0s, 0.360s;
+  }
+}
+@keyframes cursor-pos { 4.32% { transform: translate(81.60px,38.00px); } 31.65% { transform: translate(348.00px,57.00px); } 41.68% { transform: translate(117.60px,76.00px); } 67.93% { transform: translate(333.60px,95.00px); } 83.90% { transform: translate(196.80px,114.00px); } 87.99% { transform: translate(38.40px,133.00px); } 100% { transform: translate(38.40px,133.00px); } }
+@keyframes cursor-blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+</style>
+<defs>
+<filter id="grain" x="-5%" y="-5%" width="110%" height="110%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.06 0"/>
+</filter>
+
+</defs>
+<rect x="0.5" y="0.5" width="839" height="169" rx="10" class="card"/><rect x="0.5" y="0.5" width="839" height="169" rx="10" filter="url(#grain)"/>
+<line x1="0.5" y1="32.5" x2="839.5" y2="32.5" class="term-bar"/><circle cx="16" cy="16" r="4" class="term-dot d1"/><circle cx="32" cy="16" r="4" class="term-dot d2"/><circle cx="48" cy="16" r="4" class="term-dot d3"/><clipPath id="clip0"><rect class="typeclip" id="rect0" x="24" y="36" width="57.60" height="19" style="animation-delay:0.000s"/></clipPath><g clip-path="url(#clip0)"><text x="24" y="48" class="term-prompt mono">$ whoami</text></g><clipPath id="clip1"><rect class="typeclip" id="rect1" x="24" y="55" width="324.00" height="19" style="animation-delay:0.610s"/></clipPath><g clip-path="url(#clip1)"><text x="24" y="67" class="term-output mono">prithvi — Too curious to just attend lectures</text></g><clipPath id="clip2"><rect class="typeclip" id="rect2" x="24" y="74" width="93.60" height="19" style="animation-delay:2.885s"/></clipPath><g clip-path="url(#clip2)"><text x="24" y="86" class="term-prompt mono">$ cat now.txt</text></g><clipPath id="clip3"><rect class="typeclip" id="rect3" x="24" y="93" width="309.60" height="19" style="animation-delay:3.720s"/></clipPath><g clip-path="url(#clip3)"><text x="24" y="105" class="term-output mono">building: prithvipm412 — no description yet</text></g><clipPath id="clip4"><rect class="typeclip" id="rect4" x="24" y="112" width="172.80" height="19" style="animation-delay:5.905s"/></clipPath><g clip-path="url(#clip4)"><text x="24" y="124" class="term-prompt mono">$ ls hackathons/ | wc -l</text></g><clipPath id="clip5"><rect class="typeclip" id="rect5" x="24" y="131" width="14.40" height="19" style="animation-delay:7.235s"/></clipPath><g clip-path="url(#clip5)"><text x="24" y="143" class="term-output mono">10</text></g><rect class="cursor" x="0" y="0" width="7" height="14" transform="translate(24.00,38.00)"/>
+</svg>

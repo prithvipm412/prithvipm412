@@ -1,0 +1,49 @@
+<svg width="840" height="260" viewBox="0 0 840 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="When and how often I commit">
+<style>
+
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #232323; --text: #ededed; --muted: #7a7a7a;
+  --accent: #f5f5f5; --accent-soft: #4a4a4a;
+  --heat0: #151515; --heat1: #2b2b2b; --heat2: #4d4d4d; --heat3: #8c8c8c; --heat4: #e8e8e8;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa; --card: #ffffff; --border: #e4e4e4; --text: #111111; --muted: #6b6b6b;
+    --accent: #111111; --accent-soft: #b5b5b5;
+    --heat0: #f0f0f0; --heat1: #d4d4d4; --heat2: #a3a3a3; --heat3: #5c5c5c; --heat4: #1a1a1a;
+  }
+}
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.card { fill: var(--card); stroke: var(--border); stroke-width: 1; }
+.title { font-size: 13px; font-weight: 600; fill: var(--text); }
+.label { font-size: 11px; fill: var(--muted); }
+.label-sm { font-size: 10px; fill: var(--muted); }
+.value { fill: var(--text); }
+.value-muted { fill: var(--muted); }
+.sep { stroke: var(--border); stroke-width: 1; }
+
+
+.ring { stroke: var(--border); stroke-width: 1; }
+.spoke { stroke: var(--accent-soft); stroke-width: 2.5; stroke-linecap: round; }
+.spoke-peak { stroke: var(--text); stroke-width: 2.5; stroke-linecap: round; }
+.wk-bar { fill: var(--accent-soft); }
+.wk-bar-peak { fill: var(--text); }
+@media (prefers-reduced-motion: no-preference) {
+  .grow-spoke { stroke-dashoffset: var(--len); animation: spokegrow 0.5s ease-out forwards; }
+  .grow-bar { transform-box: fill-box; transform-origin: bottom; animation: bargrow 0.5s ease-out both; }
+}
+@keyframes spokegrow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: var(--len); } }
+@keyframes bargrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+</style>
+<defs>
+<filter id="grain" x="-5%" y="-5%" width="110%" height="110%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.06 0"/>
+</filter>
+
+</defs>
+
+<g transform="translate(0,0)"><rect x="0.5" y="0.5" width="385.0" height="259" rx="10" class="card"/><rect x="0.5" y="0.5" width="385.0" height="259" rx="10" filter="url(#grain)"/><text x="20" y="32" class="title sans">When I commit</text><circle cx="193.0" cy="132" r="78" class="ring" fill="none"/><line x1="193.00" y1="116.00" x2="193.00" y2="116.00" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.00s"/><line x1="197.14" y1="116.55" x2="197.55" y2="115.01" class="spoke grow-spoke" style="--len:1.59;stroke-dasharray:1.59;animation-delay:0.02s"/><line x1="201.00" y1="118.14" x2="201.00" y2="118.14" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.04s"/><line x1="204.31" y1="120.69" x2="204.31" y2="120.69" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.06s"/><line x1="206.86" y1="124.00" x2="206.86" y2="124.00" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.08s"/><line x1="208.45" y1="127.86" x2="208.45" y2="127.86" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.10s"/><line x1="209.00" y1="132.00" x2="209.00" y2="132.00" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.12s"/><line x1="208.45" y1="136.14" x2="208.45" y2="136.14" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.14s"/><line x1="206.86" y1="140.00" x2="208.23" y2="140.79" class="spoke grow-spoke" style="--len:1.59;stroke-dasharray:1.59;animation-delay:0.16s"/><line x1="204.31" y1="143.31" x2="231.29" y2="170.29" class="spoke grow-spoke" style="--len:38.15;stroke-dasharray:38.15;animation-delay:0.18s"/><line x1="201.00" y1="145.86" x2="208.95" y2="159.62" class="spoke grow-spoke" style="--len:15.90;stroke-dasharray:15.90;animation-delay:0.20s"/><line x1="197.14" y1="147.45" x2="197.14" y2="147.45" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.22s"/><line x1="193.00" y1="148.00" x2="193.00" y2="148.00" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.24s"/><line x1="188.86" y1="147.45" x2="172.81" y2="207.34" class="spoke-peak grow-spoke" style="--len:62.00;stroke-dasharray:62.00;animation-delay:0.26s"/><line x1="185.00" y1="145.86" x2="172.28" y2="167.88" class="spoke grow-spoke" style="--len:25.44;stroke-dasharray:25.44;animation-delay:0.28s"/><line x1="181.69" y1="143.31" x2="158.08" y2="166.92" class="spoke grow-spoke" style="--len:33.38;stroke-dasharray:33.38;animation-delay:0.30s"/><line x1="179.14" y1="140.00" x2="175.01" y2="142.38" class="spoke grow-spoke" style="--len:4.77;stroke-dasharray:4.77;animation-delay:0.32s"/><line x1="177.55" y1="136.14" x2="174.47" y2="136.96" class="spoke grow-spoke" style="--len:3.18;stroke-dasharray:3.18;animation-delay:0.34s"/><line x1="177.00" y1="132.00" x2="170.64" y2="132.00" class="spoke grow-spoke" style="--len:6.36;stroke-dasharray:6.36;animation-delay:0.36s"/><line x1="177.55" y1="127.86" x2="177.55" y2="127.86" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.38s"/><line x1="179.14" y1="124.00" x2="179.14" y2="124.00" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.40s"/><line x1="181.69" y1="120.69" x2="180.56" y2="119.56" class="spoke grow-spoke" style="--len:1.59;stroke-dasharray:1.59;animation-delay:0.42s"/><line x1="185.00" y1="118.14" x2="181.82" y2="112.64" class="spoke grow-spoke" style="--len:6.36;stroke-dasharray:6.36;animation-delay:0.44s"/><line x1="188.86" y1="116.55" x2="188.86" y2="116.55" class="spoke grow-spoke" style="--len:0.00;stroke-dasharray:0.00;animation-delay:0.46s"/><text x="193.00" y="41.00" text-anchor="middle" class="label-sm sans">12A</text><text x="287.00" y="135.00" text-anchor="middle" class="label-sm sans">6A</text><text x="193.00" y="229.00" text-anchor="middle" class="label-sm sans">12P</text><text x="99.00" y="135.00" text-anchor="middle" class="label-sm sans">6P</text><text x="193.0" y="250" text-anchor="middle" class="label sans">daytime builder — peak at 1 PM</text></g><g transform="translate(406.0,0)"><rect x="0.5" y="0.5" width="385.0" height="259" rx="10" class="card"/><rect x="0.5" y="0.5" width="385.0" height="259" rx="10" filter="url(#grain)"/><text x="20" y="32" class="title sans">Weekday rhythm</text><text x="366.0" y="32" text-anchor="end" class="label sans">busiest: Thu</text><rect x="20.00" y="128.00" width="40.86" height="72.00" rx="2" class="wk-bar grow-bar" style="animation-delay:0.00s"/><text x="40.43" y="216" text-anchor="middle" class="label-sm sans">Mon</text><rect x="70.86" y="180.00" width="40.86" height="20.00" rx="2" class="wk-bar grow-bar" style="animation-delay:0.06s"/><text x="91.29" y="216" text-anchor="middle" class="label-sm sans">Tue</text><rect x="121.71" y="194.00" width="40.86" height="6.00" rx="2" class="wk-bar grow-bar" style="animation-delay:0.12s"/><text x="142.14" y="216" text-anchor="middle" class="label-sm sans">Wed</text><rect x="172.57" y="70.00" width="40.86" height="130.00" rx="2" class="wk-bar-peak grow-bar" style="animation-delay:0.18s"/><text x="193.00" y="216" text-anchor="middle" class="label-sm sans">Thu</text><text x="193.00" y="64.00" text-anchor="middle" class="label sans">65</text><rect x="223.43" y="198.00" width="40.86" height="2.00" rx="2" class="wk-bar grow-bar" style="animation-delay:0.24s"/><text x="243.86" y="216" text-anchor="middle" class="label-sm sans">Fri</text><rect x="274.29" y="122.00" width="40.86" height="78.00" rx="2" class="wk-bar grow-bar" style="animation-delay:0.30s"/><text x="294.71" y="216" text-anchor="middle" class="label-sm sans">Sat</text><rect x="325.14" y="122.00" width="40.86" height="78.00" rx="2" class="wk-bar grow-bar" style="animation-delay:0.36s"/><text x="345.57" y="216" text-anchor="middle" class="label-sm sans">Sun</text></g>
+</svg>

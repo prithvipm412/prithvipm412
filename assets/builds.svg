@@ -1,17 +1,40 @@
 <svg width="840" height="194" viewBox="0 0 840 194" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Recently shipped repositories">
 <style>
-  .card{fill:#0b1426;stroke:#1c2b4a;stroke-width:1;}
-  .title{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:13px;font-weight:600;fill:#e6f1ff;}
-  .repo-name{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:13px;fill:#7c9cff;}
-  .desc,.meta{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:11px;fill:#7d8bb0;}
-  @media (prefers-color-scheme: light) {
-    .card{fill:#f5f8ff;stroke:#d6e0f5;}
-    .title{fill:#0b1426;}
-    .repo-name{fill:#3b5bdb;}
-    .desc,.meta{fill:#5a6785;}
+
+:root {
+  --bg: #0a0a0a; --card: #111111; --border: #232323; --text: #ededed; --muted: #7a7a7a;
+  --accent: #f5f5f5; --accent-soft: #4a4a4a;
+  --heat0: #151515; --heat1: #2b2b2b; --heat2: #4d4d4d; --heat3: #8c8c8c; --heat4: #e8e8e8;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fafafa; --card: #ffffff; --border: #e4e4e4; --text: #111111; --muted: #6b6b6b;
+    --accent: #111111; --accent-soft: #b5b5b5;
+    --heat0: #f0f0f0; --heat1: #d4d4d4; --heat2: #a3a3a3; --heat3: #5c5c5c; --heat4: #1a1a1a;
   }
+}
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.card { fill: var(--card); stroke: var(--border); stroke-width: 1; }
+.title { font-size: 13px; font-weight: 600; fill: var(--text); }
+.label { font-size: 11px; fill: var(--muted); }
+.label-sm { font-size: 10px; fill: var(--muted); }
+.value { fill: var(--text); }
+.value-muted { fill: var(--muted); }
+.sep { stroke: var(--border); stroke-width: 1; }
+
+
+.repo-name { font-size: 13px; fill: var(--text); }
+.desc { font-size: 11px; fill: var(--muted); }
+
 </style>
-<rect x="0.5" y="0.5" width="839" height="193" rx="10" class="card"/>
-<text x="24" y="32" class="title">Recently shipped</text>
-<text x="24.0" y="66" class="repo-name">prithvipm412</text><text x="24.0" y="82" class="desc">No description yet</text><circle cx="26.0" cy="96" r="3" fill="#3572A5"/><text x="34.0" y="99" class="meta">Python · updated today</text><text x="428.0" y="66" class="repo-name">tollgate</text><text x="428.0" y="82" class="desc">Open-source firewall for AI agents that move money through PayPal: sp…</text><circle cx="430.0" cy="96" r="3" fill="#3178c6"/><text x="438.0" y="99" class="meta">TypeScript · updated yesterday</text><text x="24.0" y="130" class="repo-name">blast-radius</text><text x="24.0" y="146" class="desc">On-call agent with a company brain: traces blast radius, owners, expe…</text><circle cx="26.0" cy="160" r="3" fill="#3572A5"/><text x="34.0" y="163" class="meta">Python · updated 4 days ago</text><text x="428.0" y="130" class="repo-name">Chaos</text><text x="428.0" y="146" class="desc">No description yet</text><circle cx="430.0" cy="160" r="3" fill="#f1e05a"/><text x="438.0" y="163" class="meta">JavaScript · updated 13 days ago</text>
+<defs>
+<filter id="grain" x="-5%" y="-5%" width="110%" height="110%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" stitchTiles="stitch" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.06 0"/>
+</filter>
+
+</defs>
+<rect x="0.5" y="0.5" width="839" height="193" rx="10" class="card"/><rect x="0.5" y="0.5" width="839" height="193" rx="10" filter="url(#grain)"/>
+<text x="24" y="32" class="title sans">Recently shipped</text><text x="24.0" y="66" class="repo-name sans">prithvipm412</text><text x="24.0" y="82" class="desc sans">No description yet</text><circle cx="26.0" cy="96" r="3" fill="#576f83"/><text x="34.0" y="99" class="label sans">Python · updated today</text><text x="428.0" y="66" class="repo-name sans">tollgate</text><text x="428.0" y="82" class="desc sans">Open-source firewall for AI agents that move money through PayPal: sp…</text><circle cx="430.0" cy="96" r="3" fill="#5e7a99"/><text x="438.0" y="99" class="label sans">TypeScript · updated yesterday</text><text x="24.0" y="130" class="repo-name sans">blast-radius</text><text x="24.0" y="146" class="desc sans">On-call agent with a company brain: traces blast radius, owners, expe…</text><circle cx="26.0" cy="160" r="3" fill="#576f83"/><text x="34.0" y="163" class="label sans">Python · updated 4 days ago</text><text x="428.0" y="130" class="repo-name sans">Chaos</text><text x="428.0" y="146" class="desc sans">No description yet</text><circle cx="430.0" cy="160" r="3" fill="#c4bd87"/><text x="438.0" y="163" class="label sans">JavaScript · updated 13 days ago</text>
 </svg>

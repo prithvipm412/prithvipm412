@@ -1,9 +1,12 @@
 <div align="center">
 
+<img src="assets/terminal.svg" width="100%" alt="Terminal: a quick introduction" />
 <img src="assets/header.svg" width="100%" alt="Shipping log: contributions over the last year" />
-<img src="assets/stack.svg" width="100%" alt="Python, PyTorch, OpenCV, TypeScript, React, FastAPI, Godot, Linux" />
+<img src="assets/stack.svg" width="100%" alt="Python, TypeScript, PyTorch, OpenCV, MediaPipe, FastAPI, React, Next.js, Tailwind, Solidity, Godot" />
 <img src="assets/field.svg" width="100%" alt="Particle field generated from my contribution data" />
 <img src="assets/stats.svg" width="100%" alt="Repository, language and streak stats" />
+<img src="assets/clock.svg" width="100%" alt="When and how often I commit" />
+<img src="assets/skyline.svg" width="100%" alt="Isometric skyline of weekly contributions" />
 <img src="assets/activity.svg" width="100%" alt="Contribution heatmap" />
 <img src="assets/builds.svg" width="100%" alt="Recently shipped repositories" />
 

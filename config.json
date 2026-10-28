@@ -4,5 +4,6 @@
   "tagline": "Too curious to just attend lectures",
   "stack": ["Python", "TypeScript", "PyTorch", "OpenCV", "MediaPipe", "FastAPI", "React", "Next.js", "Tailwind", "Solidity", "Godot"],
   "exclude_repos": ["niche-vc-project"],
-  "builds_count": 4
+  "builds_count": 4,
+  "hackathon_count": 10
 }

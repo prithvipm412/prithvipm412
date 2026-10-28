@@ -345,24 +345,6 @@ def derive_commit_hours(history_data, username):
 # Small render helpers
 # ---------------------------------------------------------------------------
 
-def catmull_rom_to_bezier_path(points):
-    if len(points) < 2:
-        return ""
-    p = points
-    d = f"M {p[0][0]:.2f},{p[0][1]:.2f} "
-    for i in range(len(p) - 1):
-        p0 = p[i - 1] if i - 1 >= 0 else p[i]
-        p1 = p[i]
-        p2 = p[i + 1]
-        p3 = p[i + 2] if i + 2 < len(p) else p2
-        c1x = p1[0] + (p2[0] - p0[0]) / 6
-        c1y = p1[1] + (p2[1] - p0[1]) / 6
-        c2x = p2[0] - (p3[0] - p1[0]) / 6
-        c2y = p2[1] - (p3[1] - p1[1]) / 6
-        d += f"C {c1x:.2f},{c1y:.2f} {c2x:.2f},{c2y:.2f} {p2[0]:.2f},{p2[1]:.2f} "
-    return d.strip()
-
-
 def fmt_hour_12(h):
     period = "AM" if h < 12 else "PM"
     h12 = h % 12
@@ -482,65 +464,6 @@ def render_terminal(config, building_line):
     cursor = f'<rect class="cursor" x="0" y="0" width="7" height="{font_size + 2}" transform="translate({pad:.2f},{top - font_size + 2:.2f})"/>'
 
     return svg_doc(w, h, "Terminal: a quick introduction", style_extra, chrome + "".join(body) + cursor)
-
-
-# ---------------------------------------------------------------------------
-# Render: header.svg
-# ---------------------------------------------------------------------------
-
-def render_header(config, weekly_totals, total_contributions):
-    w, h = WIDTH, 110
-    pad = 24
-    chart_top, chart_bottom = 46, h - 20
-    chart_left, chart_right = pad, w - pad
-
-    values = weekly_totals or [0]
-    vmax = max(values) or 1
-    n = len(values)
-    points = [
-        (
-            chart_left + (chart_right - chart_left) * (i / max(n - 1, 1)),
-            chart_bottom - (chart_bottom - chart_top) * (v / vmax),
-        )
-        for i, v in enumerate(values)
-    ]
-
-    line_path = catmull_rom_to_bezier_path(points)
-    area_path = (
-        f"{line_path} L {points[-1][0]:.2f},{chart_bottom:.2f} "
-        f"L {points[0][0]:.2f},{chart_bottom:.2f} Z"
-    )
-    last_x, last_y = points[-1]
-    tagline = escape_xml(config["tagline"])
-
-    style_extra = """
-.tagline { font-size: 15px; fill: var(--text); }
-.total { font-size: 11px; fill: var(--muted); }
-.line { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 1600; stroke-dashoffset: 1600; }
-.area { fill: url(#sparkGrad); }
-.dot { fill: var(--accent); }
-@media (prefers-reduced-motion: no-preference) {
-  .line { animation: draw 2.2s ease-out forwards; }
-  .dot { animation: pulse 2.4s ease-in-out infinite; }
-}
-@keyframes draw { to { stroke-dashoffset: 0; } }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-"""
-    defs_extra = """<linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.18"/>
-  <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
-</linearGradient>"""
-
-    body = (
-        f'<text x="{pad}" y="30" class="tagline sans">{tagline}</text>'
-        f'<text x="{pad}" y="{h - 8}" class="label sans">Contributions, last 52 weeks</text>'
-        f'<text x="{w - pad}" y="{h - 8}" text-anchor="end" class="total mono">{total_contributions} total</text>'
-        f'<path d="{area_path}" class="area"/>'
-        f'<path d="{line_path}" class="line"/>'
-        f'<circle cx="{last_x:.2f}" cy="{last_y:.2f}" r="3" class="dot"/>'
-    )
-
-    return svg_doc(w, h, config["tagline"], style_extra, body, defs_extra)
 
 
 # ---------------------------------------------------------------------------
@@ -1135,7 +1058,6 @@ def main():
 
         svgs = {
             "terminal": render_terminal(config, building_line),
-            "header": render_header(config, weekly_totals, total_contributions),
             "stack": render_stack(config),
             "field": render_field(active_days_60, total_contributions),
             "stats": render_stats(overview, languages, streaks),

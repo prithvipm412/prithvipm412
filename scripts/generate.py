@@ -255,11 +255,6 @@ def derive_contribution_days(contrib_collection):
     return days
 
 
-def derive_weekly_totals(contrib_collection):
-    weeks = contrib_collection["contributionCalendar"]["weeks"]
-    return [sum(d["contributionCount"] for d in w["contributionDays"]) for w in weeks]
-
-
 def derive_streaks(days):
     if not days:
         return {"current": 0, "longest": 0, "peak": 0}
@@ -792,61 +787,6 @@ def render_clock(hours, weekday_totals):
 
 
 # ---------------------------------------------------------------------------
-# Render: skyline.svg
-# ---------------------------------------------------------------------------
-
-def render_skyline(weekly_totals, year):
-    w, h = WIDTH, 220
-    pad = 24
-    baseline = 170
-    max_tower_h = 120
-    ddx, ddy = 5, -3
-
-    values = weekly_totals or [0]
-    vmax = max(values) or 1
-    n = len(values)
-    avail_w = w - pad * 2
-    spacing = avail_w / n
-    tower_w = max(2, spacing * 0.6)
-
-    towers = []
-    for i, v in enumerate(values):
-        bx = pad + i * spacing
-        th = max(2, (v / vmax) * max_tower_h)
-        top_y = baseline - th
-        delay = i * 0.012
-        front = f'<rect x="{bx:.2f}" y="{top_y:.2f}" width="{tower_w:.2f}" height="{th:.2f}" class="tower-front"/>'
-        right = (
-            f'<polygon points="{bx + tower_w:.2f},{top_y:.2f} {bx + tower_w + ddx:.2f},{top_y + ddy:.2f} '
-            f'{bx + tower_w + ddx:.2f},{baseline + ddy:.2f} {bx + tower_w:.2f},{baseline:.2f}" class="tower-right"/>'
-        )
-        top = (
-            f'<polygon points="{bx:.2f},{top_y:.2f} {bx + tower_w:.2f},{top_y:.2f} '
-            f'{bx + tower_w + ddx:.2f},{top_y + ddy:.2f} {bx + ddx:.2f},{top_y + ddy:.2f}" class="tower-top"/>'
-        )
-        towers.append(
-            f'<g class="tower" style="animation-delay:{delay:.3f}s">{front}{right}{top}</g>'
-        )
-
-    caption = f"{year} in commits"
-    body = (
-        f'<text x="{pad}" y="32" class="title sans">Skyline</text>'
-        f'{"".join(towers)}'
-        f'<text x="{pad}" y="{h - 14}" class="label sans">{escape_xml(caption)}</text>'
-    )
-    style_extra = """
-.tower-top { fill: var(--text); opacity: 0.85; }
-.tower-right { fill: var(--text); opacity: 0.5; }
-.tower-front { fill: var(--text); opacity: 0.28; }
-@media (prefers-reduced-motion: no-preference) {
-  .tower { transform-box: fill-box; transform-origin: bottom; animation: rise 0.5s ease-out both; }
-}
-@keyframes rise { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-"""
-    return svg_doc(w, h, f"Isometric skyline of weekly contributions, {year}", style_extra, body)
-
-
-# ---------------------------------------------------------------------------
 # Render: activity.svg
 # ---------------------------------------------------------------------------
 
@@ -1030,7 +970,6 @@ def main():
 
     try:
         days = derive_contribution_days(contrib)
-        weekly_totals = derive_weekly_totals(contrib)
         total_contributions = contrib["contributionCalendar"]["totalContributions"]
         streaks = derive_streaks(days)
         weekday_totals = derive_weekday_totals(days)
@@ -1054,15 +993,12 @@ def main():
         else:
             building_line = "building: nothing public yet"
 
-        year = datetime.now(IST).year
-
         svgs = {
             "terminal": render_terminal(config, building_line),
             "stack": render_stack(config),
             "field": render_field(active_days_60, total_contributions),
             "stats": render_stats(overview, languages, streaks),
             "clock": render_clock(hours, weekday_totals),
-            "skyline": render_skyline(weekly_totals, year),
             "activity": render_activity(days, streaks),
             "builds": render_builds(builds),
         }

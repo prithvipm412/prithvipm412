@@ -5,7 +5,6 @@
 <img src="assets/field.svg" width="100%" alt="Particle field generated from my contribution data" />
 <img src="assets/stats.svg" width="100%" alt="Repository, language and streak stats" />
 <img src="assets/clock.svg" width="100%" alt="When and how often I commit" />
-<img src="assets/skyline.svg" width="100%" alt="Isometric skyline of weekly contributions" />
 <img src="assets/activity.svg" width="100%" alt="Contribution heatmap" />
 <img src="assets/builds.svg" width="100%" alt="Recently shipped repositories" />
 

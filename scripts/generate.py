@@ -512,77 +512,6 @@ def render_stack(config):
 
 
 # ---------------------------------------------------------------------------
-# Render: field.svg
-# ---------------------------------------------------------------------------
-
-def render_field(active_days_60, total_contributions):
-    w, h = WIDTH, 260
-    pad = 24
-    n = max(24, min(80, active_days_60))
-    rng = random.Random(total_contributions or 1)
-
-    points = [
-        {
-            "x": rng.uniform(pad, w - pad),
-            "y": rng.uniform(pad, h - pad - 24),
-            "r": rng.uniform(1, 3.5),
-        }
-        for _ in range(n)
-    ]
-    bright_count = max(1, round(n * 0.15))
-    bright_idx = set(rng.sample(range(n), bright_count))
-
-    lines = []
-    for i in range(n):
-        for j in range(i + 1, n):
-            dx = points[i]["x"] - points[j]["x"]
-            dy = points[i]["y"] - points[j]["y"]
-            dist = math.hypot(dx, dy)
-            if dist < 110:
-                opacity = max(0.04, 0.22 * (1 - dist / 110))
-                lines.append(
-                    f'<line x1="{points[i]["x"]:.2f}" y1="{points[i]["y"]:.2f}" '
-                    f'x2="{points[j]["x"]:.2f}" y2="{points[j]["y"]:.2f}" '
-                    f'class="field-line" opacity="{opacity:.3f}"/>'
-                )
-
-    dots = []
-    for idx, p in enumerate(points):
-        cls = "pt-bright" if idx in bright_idx else "pt-soft"
-        dur = rng.uniform(12, 30)
-        delay = rng.uniform(0, dur)
-        dx1, dy1 = rng.uniform(-6, 6), rng.uniform(-6, 6)
-        twinkle_anim = ""
-        if rng.random() < 0.2:
-            tdur = rng.uniform(3, 6)
-            twinkle_anim = (
-                f'<animate attributeName="opacity" values="1;0.3;1" '
-                f'dur="{tdur:.1f}s" begin="-{rng.uniform(0, tdur):.1f}s" repeatCount="indefinite"/>'
-            )
-        dots.append(
-            f'<g><circle cx="{p["x"]:.2f}" cy="{p["y"]:.2f}" r="{p["r"]:.2f}" class="{cls}">{twinkle_anim}</circle>'
-            f'<animateTransform attributeName="transform" type="translate" '
-            f'values="0,0; {dx1:.2f},{dy1:.2f}; 0,0" dur="{dur:.1f}s" begin="-{delay:.1f}s" '
-            f'repeatCount="indefinite"/></g>'
-        )
-
-    caption = f"particle field · {n} points · seeded by {total_contributions} contributions"
-
-    style_extra = """
-.field-line { stroke: var(--accent-soft); stroke-width: 0.6; }
-.pt-bright { fill: var(--accent); }
-.pt-soft { fill: var(--accent-soft); opacity: 0.7; }
-.caption { font-size: 10px; fill: var(--muted); }
-"""
-    body = (
-        f'<g>{"".join(lines)}</g>'
-        f'<g>{"".join(dots)}</g>'
-        f'<text x="{pad}" y="{h - 14}" class="caption sans">{caption}</text>'
-    )
-    return svg_doc(w, h, "Particle field generated from contribution data", style_extra, body)
-
-
-# ---------------------------------------------------------------------------
 # Render: stats.svg (donut language ring)
 # ---------------------------------------------------------------------------
 
@@ -970,13 +899,11 @@ def main():
 
     try:
         days = derive_contribution_days(contrib)
-        total_contributions = contrib["contributionCalendar"]["totalContributions"]
         streaks = derive_streaks(days)
         weekday_totals = derive_weekday_totals(days)
         languages = derive_languages(repos, exclude)
         overview = derive_overview(repos, exclude, user_data["followers"]["totalCount"])
         builds = derive_builds(repos, exclude, config.get("builds_count", 4))
-        active_days_60 = sum(1 for d in days[-60:] if d["count"] > 0)
 
         history_repo_names = [r["name"] for r in builds[:10]] or [r["name"] for r in repos[:10] if r["name"] not in exclude]
         try:
@@ -996,7 +923,6 @@ def main():
         svgs = {
             "terminal": render_terminal(config, building_line),
             "stack": render_stack(config),
-            "field": render_field(active_days_60, total_contributions),
             "stats": render_stats(overview, languages, streaks),
             "clock": render_clock(hours, weekday_totals),
             "activity": render_activity(days, streaks),
